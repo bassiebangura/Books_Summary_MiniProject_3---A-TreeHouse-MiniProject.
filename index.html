@@ -10,9 +10,17 @@
 <body>
     <h1>Books  Archive</h1>
     <div id="book">
-        <h2 v-on:click="sayHello">{{ title }}</h2>
-        <p>{{ author }}</p>
-        <p>{{ summary }}</p>
+        <h2 v-on:click="toggleDetails">{{ title }}</h2>
+        <div id="bookDetail" v-show="showDetail">
+            <p>{{ author }}</p>
+            <p>{{ summary }}</p>
+        </div>
+    </div>
+    <div id="colors">
+        <ul>
+            <li v-bind:style="{color: color}" v-for="(color, item) in rainbow">{{ item }} - {{ color }}</li>
+        </ul>
+
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
     <script src="app.js"></script>
