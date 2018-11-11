@@ -4,21 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/styles.css" />
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <title>Treehouse Library</title>
 </head>
 <body>
-    <div id="media-list">
-        <h1>{{ title }}</h1>
-        <ul>
-            <li v-for="item in mediaList">
-                <h2>{{ item.title }}</h2>
-                <p>{{ item.description }}</p>
-                <p>{{ item.type }}</p>
-                <p>{{ item.contributor }}</p>
-            </li>
-        </ul>
-    </div>
+    <div class="container">
+        <div id="media-list">
+            <h1>{{ title }}</h1>
+            <select>
+                <option>Select a type of media</option>
+                <option v-for="media in mediaList">{{ media.type }}</option>
+            </select>
+            <ul>
+                <li v-for="media in mediaList" v-on:click="toggleDetail(media)">
+                    <h3>{{ media.title }}</h3>
+                    <div v-show="media.showDetail">
+                        <p>{{ media.description }}</p>
+                        <p class="byline" v-if="media.contributor">By: {{ media.contributor }}</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>    
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
     <script src="app.js"></script>
 </body>
