@@ -19,7 +19,8 @@
             <ul>
                 <li v-for="media in mediaList"
                     v-show="type === '' || media.type === type" 
-                    v-on:click="toggleDetail(media)">
+                    v-on:click="toggleDetail(media)"
+                    v-bind:class="{less: media.showDetail, more: !mediaShowDetail}">
                     <h3>{{ media.title }}</h3>
                     <div v-show="media.showDetail">
                         <p>{{ media.description }}</p>
