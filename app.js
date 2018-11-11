@@ -63,3 +63,10 @@ const media = [
       showDetail: false,
     }
   ]
+const app = new Vue ({
+    el: '#media-list',
+    data: {
+        title: 'Treehouse Public Library',
+        mediaList: media
+    }
+})

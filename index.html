@@ -5,22 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-    <title>Books</title>
+    <title>Treehouse Library</title>
 </head>
 <body>
-    <h1>Books  Archive</h1>
-    <div id="book">
-        <h2 v-on:click="toggleDetails">{{ title }}</h2>
-        <div id="bookDetail" v-show="showDetail">
-            <p>{{ author }}</p>
-            <p>{{ summary }}</p>
-        </div>
-    </div>
-    <div id="colors">
+    <div id="media-list">
+        <h1>{{ title }}</h1>
         <ul>
-            <li v-bind:style="{color: color}" v-for="(color, item) in rainbow">{{ item }} - {{ color }}</li>
+            <li v-for="item in mediaList">
+                <h2>{{ item.title }}</h2>
+                <p>{{ item.description }}</p>
+                <p>{{ item.type }}</p>
+                <p>{{ item.contributor }}</p>
+            </li>
         </ul>
-
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
     <script src="app.js"></script>
