@@ -69,20 +69,23 @@ const app = new Vue ({
         title: 'Treehouse Public Library',
         mediaList: media,
         showDetail: false,
-        type: ''
+        type: ''//Implemented to help filter items by stpe
     },
     methods: {
+        //This method toggles detail on click
         toggleDetail: function (media) {
             media.showDetail = !media.showDetail;
         },
+        //This method is used to display items based on their property
         filterList: function () {
             this.type = event.target.value;
         }
     },
     computed: {
+        //Create a unique list of select option to choose from
         uniqueItemsList: function() {
             const types = [];
-            this.mediaList.forEach((item) => {
+            this.mediaList.forEach((item) => { //loops through mediaList and adds media's type value to types array
                 if(!types.includes(item.type)) {
                     types.push(item.type);
                 }

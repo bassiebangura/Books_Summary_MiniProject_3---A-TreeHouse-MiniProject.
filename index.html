@@ -14,13 +14,16 @@
             <h1>{{ title }}</h1>
             <select v-on:change="filterList">
                 <option value=''>Select a type of media</option>
-                <option v-for="item in uniqueItemsList">{{ item }}</option>
+                <option v-for="item in uniqueItemsList">{{ item }}</option><!-- Addd unique item to options-->
             </select>
             <ul>
-                <li v-for="media in mediaList"
+                <!-- v-show="type === '' || media.type === type" --this displays all item or item based on its type -->
+                <!-- v-for="media in mediaList -- loops through mediaList array in app.js-->
+                <li v-for="media in mediaList" 
                     v-show="type === '' || media.type === type" 
                     v-on:click="toggleDetail(media)"
-                    v-bind:class="{less: media.showDetail, more: !mediaShowDetail}">
+                    v-bind:class="[media.showDetail ? 'less' : 'more', media.type ]"><!-- add class to li items-->
+                    <!-- media.type still needs more work for type name with space between them-->
                     <h3>{{ media.title }}</h3>
                     <div v-show="media.showDetail">
                         <p>{{ media.description }}</p>
